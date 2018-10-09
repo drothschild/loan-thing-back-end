@@ -1,0 +1,3616 @@
+# source: http://localhost:4466
+# timestamp: Mon Oct 08 2018 17:23:03 GMT-0700 (Pacific Daylight Time)
+
+type Address implements Node {
+  id: ID!
+  name: String!
+  street1: String!
+  street2: String!
+  city: String!
+  county: String!
+  state: String!
+  zip: String!
+}
+
+"""A connection to a list of items."""
+type AddressConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [AddressEdge]!
+  aggregate: AggregateAddress!
+}
+
+input AddressCreateInput {
+  name: String!
+  street1: String!
+  street2: String!
+  city: String!
+  county: String!
+  state: String!
+  zip: String!
+}
+
+input AddressCreateOneInput {
+  create: AddressCreateInput
+  connect: AddressWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type AddressEdge {
+  """The item at the end of the edge."""
+  node: Address!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum AddressOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  street1_ASC
+  street1_DESC
+  street2_ASC
+  street2_DESC
+  city_ASC
+  city_DESC
+  county_ASC
+  county_DESC
+  state_ASC
+  state_DESC
+  zip_ASC
+  zip_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type AddressPreviousValues {
+  id: ID!
+  name: String!
+  street1: String!
+  street2: String!
+  city: String!
+  county: String!
+  state: String!
+  zip: String!
+}
+
+type AddressSubscriptionPayload {
+  mutation: MutationType!
+  node: Address
+  updatedFields: [String!]
+  previousValues: AddressPreviousValues
+}
+
+input AddressSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [AddressSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [AddressSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [AddressSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: AddressWhereInput
+}
+
+input AddressUpdateDataInput {
+  name: String
+  street1: String
+  street2: String
+  city: String
+  county: String
+  state: String
+  zip: String
+}
+
+input AddressUpdateInput {
+  name: String
+  street1: String
+  street2: String
+  city: String
+  county: String
+  state: String
+  zip: String
+}
+
+input AddressUpdateOneInput {
+  create: AddressCreateInput
+  connect: AddressWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: AddressUpdateDataInput
+  upsert: AddressUpsertNestedInput
+}
+
+input AddressUpsertNestedInput {
+  update: AddressUpdateDataInput!
+  create: AddressCreateInput!
+}
+
+input AddressWhereInput {
+  """Logical AND on all given filters."""
+  AND: [AddressWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [AddressWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [AddressWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  street1: String
+
+  """All values that are not equal to given value."""
+  street1_not: String
+
+  """All values that are contained in given list."""
+  street1_in: [String!]
+
+  """All values that are not contained in given list."""
+  street1_not_in: [String!]
+
+  """All values less than the given value."""
+  street1_lt: String
+
+  """All values less than or equal the given value."""
+  street1_lte: String
+
+  """All values greater than the given value."""
+  street1_gt: String
+
+  """All values greater than or equal the given value."""
+  street1_gte: String
+
+  """All values containing the given string."""
+  street1_contains: String
+
+  """All values not containing the given string."""
+  street1_not_contains: String
+
+  """All values starting with the given string."""
+  street1_starts_with: String
+
+  """All values not starting with the given string."""
+  street1_not_starts_with: String
+
+  """All values ending with the given string."""
+  street1_ends_with: String
+
+  """All values not ending with the given string."""
+  street1_not_ends_with: String
+  street2: String
+
+  """All values that are not equal to given value."""
+  street2_not: String
+
+  """All values that are contained in given list."""
+  street2_in: [String!]
+
+  """All values that are not contained in given list."""
+  street2_not_in: [String!]
+
+  """All values less than the given value."""
+  street2_lt: String
+
+  """All values less than or equal the given value."""
+  street2_lte: String
+
+  """All values greater than the given value."""
+  street2_gt: String
+
+  """All values greater than or equal the given value."""
+  street2_gte: String
+
+  """All values containing the given string."""
+  street2_contains: String
+
+  """All values not containing the given string."""
+  street2_not_contains: String
+
+  """All values starting with the given string."""
+  street2_starts_with: String
+
+  """All values not starting with the given string."""
+  street2_not_starts_with: String
+
+  """All values ending with the given string."""
+  street2_ends_with: String
+
+  """All values not ending with the given string."""
+  street2_not_ends_with: String
+  city: String
+
+  """All values that are not equal to given value."""
+  city_not: String
+
+  """All values that are contained in given list."""
+  city_in: [String!]
+
+  """All values that are not contained in given list."""
+  city_not_in: [String!]
+
+  """All values less than the given value."""
+  city_lt: String
+
+  """All values less than or equal the given value."""
+  city_lte: String
+
+  """All values greater than the given value."""
+  city_gt: String
+
+  """All values greater than or equal the given value."""
+  city_gte: String
+
+  """All values containing the given string."""
+  city_contains: String
+
+  """All values not containing the given string."""
+  city_not_contains: String
+
+  """All values starting with the given string."""
+  city_starts_with: String
+
+  """All values not starting with the given string."""
+  city_not_starts_with: String
+
+  """All values ending with the given string."""
+  city_ends_with: String
+
+  """All values not ending with the given string."""
+  city_not_ends_with: String
+  county: String
+
+  """All values that are not equal to given value."""
+  county_not: String
+
+  """All values that are contained in given list."""
+  county_in: [String!]
+
+  """All values that are not contained in given list."""
+  county_not_in: [String!]
+
+  """All values less than the given value."""
+  county_lt: String
+
+  """All values less than or equal the given value."""
+  county_lte: String
+
+  """All values greater than the given value."""
+  county_gt: String
+
+  """All values greater than or equal the given value."""
+  county_gte: String
+
+  """All values containing the given string."""
+  county_contains: String
+
+  """All values not containing the given string."""
+  county_not_contains: String
+
+  """All values starting with the given string."""
+  county_starts_with: String
+
+  """All values not starting with the given string."""
+  county_not_starts_with: String
+
+  """All values ending with the given string."""
+  county_ends_with: String
+
+  """All values not ending with the given string."""
+  county_not_ends_with: String
+  state: String
+
+  """All values that are not equal to given value."""
+  state_not: String
+
+  """All values that are contained in given list."""
+  state_in: [String!]
+
+  """All values that are not contained in given list."""
+  state_not_in: [String!]
+
+  """All values less than the given value."""
+  state_lt: String
+
+  """All values less than or equal the given value."""
+  state_lte: String
+
+  """All values greater than the given value."""
+  state_gt: String
+
+  """All values greater than or equal the given value."""
+  state_gte: String
+
+  """All values containing the given string."""
+  state_contains: String
+
+  """All values not containing the given string."""
+  state_not_contains: String
+
+  """All values starting with the given string."""
+  state_starts_with: String
+
+  """All values not starting with the given string."""
+  state_not_starts_with: String
+
+  """All values ending with the given string."""
+  state_ends_with: String
+
+  """All values not ending with the given string."""
+  state_not_ends_with: String
+  zip: String
+
+  """All values that are not equal to given value."""
+  zip_not: String
+
+  """All values that are contained in given list."""
+  zip_in: [String!]
+
+  """All values that are not contained in given list."""
+  zip_not_in: [String!]
+
+  """All values less than the given value."""
+  zip_lt: String
+
+  """All values less than or equal the given value."""
+  zip_lte: String
+
+  """All values greater than the given value."""
+  zip_gt: String
+
+  """All values greater than or equal the given value."""
+  zip_gte: String
+
+  """All values containing the given string."""
+  zip_contains: String
+
+  """All values not containing the given string."""
+  zip_not_contains: String
+
+  """All values starting with the given string."""
+  zip_starts_with: String
+
+  """All values not starting with the given string."""
+  zip_not_starts_with: String
+
+  """All values ending with the given string."""
+  zip_ends_with: String
+
+  """All values not ending with the given string."""
+  zip_not_ends_with: String
+}
+
+input AddressWhereUniqueInput {
+  id: ID
+}
+
+type AggregateAddress {
+  count: Int!
+}
+
+type AggregateBorrowing {
+  count: Int!
+}
+
+type AggregateBorrowingItem {
+  count: Int!
+}
+
+type AggregateItem {
+  count: Int!
+}
+
+type AggregateLocation {
+  count: Int!
+}
+
+type AggregateMessage {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type Borrowing implements Node {
+  id: ID!
+  item(where: BorrowingItemWhereInput): BorrowingItem!
+  owner(where: UserWhereInput): User
+  borrower(where: UserWhereInput): User
+  indefinite: Boolean!
+  beginDate: DateTime!
+  endDate: DateTime!
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus!
+  fromLocation(where: LocationWhereInput): Location
+  toLocation(where: LocationWhereInput): Location
+}
+
+"""A connection to a list of items."""
+type BorrowingConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BorrowingEdge]!
+  aggregate: AggregateBorrowing!
+}
+
+input BorrowingCreateInput {
+  indefinite: Boolean
+  beginDate: DateTime!
+  endDate: DateTime!
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus!
+  item: BorrowingItemCreateOneInput!
+  owner: UserCreateOneWithoutBorrowingsFromInput
+  borrower: UserCreateOneWithoutBorrowingsToInput
+  fromLocation: LocationCreateOneWithoutBorrowingFromInput
+  toLocation: LocationCreateOneWithoutBorrowingToInput
+}
+
+input BorrowingCreateManyWithoutBorrowerInput {
+  create: [BorrowingCreateWithoutBorrowerInput!]
+  connect: [BorrowingWhereUniqueInput!]
+}
+
+input BorrowingCreateManyWithoutOwnerInput {
+  create: [BorrowingCreateWithoutOwnerInput!]
+  connect: [BorrowingWhereUniqueInput!]
+}
+
+input BorrowingCreateOneInput {
+  create: BorrowingCreateInput
+  connect: BorrowingWhereUniqueInput
+}
+
+input BorrowingCreateOneWithoutFromLocationInput {
+  create: BorrowingCreateWithoutFromLocationInput
+  connect: BorrowingWhereUniqueInput
+}
+
+input BorrowingCreateOneWithoutToLocationInput {
+  create: BorrowingCreateWithoutToLocationInput
+  connect: BorrowingWhereUniqueInput
+}
+
+input BorrowingCreateWithoutBorrowerInput {
+  indefinite: Boolean
+  beginDate: DateTime!
+  endDate: DateTime!
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus!
+  item: BorrowingItemCreateOneInput!
+  owner: UserCreateOneWithoutBorrowingsFromInput
+  fromLocation: LocationCreateOneWithoutBorrowingFromInput
+  toLocation: LocationCreateOneWithoutBorrowingToInput
+}
+
+input BorrowingCreateWithoutFromLocationInput {
+  indefinite: Boolean
+  beginDate: DateTime!
+  endDate: DateTime!
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus!
+  item: BorrowingItemCreateOneInput!
+  owner: UserCreateOneWithoutBorrowingsFromInput
+  borrower: UserCreateOneWithoutBorrowingsToInput
+  toLocation: LocationCreateOneWithoutBorrowingToInput
+}
+
+input BorrowingCreateWithoutOwnerInput {
+  indefinite: Boolean
+  beginDate: DateTime!
+  endDate: DateTime!
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus!
+  item: BorrowingItemCreateOneInput!
+  borrower: UserCreateOneWithoutBorrowingsToInput
+  fromLocation: LocationCreateOneWithoutBorrowingFromInput
+  toLocation: LocationCreateOneWithoutBorrowingToInput
+}
+
+input BorrowingCreateWithoutToLocationInput {
+  indefinite: Boolean
+  beginDate: DateTime!
+  endDate: DateTime!
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus!
+  item: BorrowingItemCreateOneInput!
+  owner: UserCreateOneWithoutBorrowingsFromInput
+  borrower: UserCreateOneWithoutBorrowingsToInput
+  fromLocation: LocationCreateOneWithoutBorrowingFromInput
+}
+
+"""An edge in a connection."""
+type BorrowingEdge {
+  """The item at the end of the edge."""
+  node: Borrowing!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type BorrowingItem implements Node {
+  id: ID!
+  item(where: ItemWhereInput): Item!
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  cost: Int!
+  owner(where: UserWhereInput): User
+  indefiniteBorrowingAllowed: Boolean!
+  maxDaysBorrowable: Int!
+  location(where: LocationWhereInput): Location
+}
+
+"""A connection to a list of items."""
+type BorrowingItemConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BorrowingItemEdge]!
+  aggregate: AggregateBorrowingItem!
+}
+
+input BorrowingItemCreateInput {
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  cost: Int!
+  indefiniteBorrowingAllowed: Boolean!
+  maxDaysBorrowable: Int!
+  item: ItemCreateOneInput!
+  owner: UserCreateOneInput
+  location: LocationCreateOneInput
+}
+
+input BorrowingItemCreateOneInput {
+  create: BorrowingItemCreateInput
+  connect: BorrowingItemWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type BorrowingItemEdge {
+  """The item at the end of the edge."""
+  node: BorrowingItem!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BorrowingItemOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  description_ASC
+  description_DESC
+  image_ASC
+  image_DESC
+  largeImage_ASC
+  largeImage_DESC
+  cost_ASC
+  cost_DESC
+  indefiniteBorrowingAllowed_ASC
+  indefiniteBorrowingAllowed_DESC
+  maxDaysBorrowable_ASC
+  maxDaysBorrowable_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BorrowingItemPreviousValues {
+  id: ID!
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  cost: Int!
+  indefiniteBorrowingAllowed: Boolean!
+  maxDaysBorrowable: Int!
+}
+
+type BorrowingItemSubscriptionPayload {
+  mutation: MutationType!
+  node: BorrowingItem
+  updatedFields: [String!]
+  previousValues: BorrowingItemPreviousValues
+}
+
+input BorrowingItemSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BorrowingItemSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BorrowingItemSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BorrowingItemSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BorrowingItemWhereInput
+}
+
+input BorrowingItemUpdateDataInput {
+  title: String
+  description: String
+  image: String
+  largeImage: String
+  cost: Int
+  indefiniteBorrowingAllowed: Boolean
+  maxDaysBorrowable: Int
+  item: ItemUpdateOneRequiredInput
+  owner: UserUpdateOneInput
+  location: LocationUpdateOneInput
+}
+
+input BorrowingItemUpdateInput {
+  title: String
+  description: String
+  image: String
+  largeImage: String
+  cost: Int
+  indefiniteBorrowingAllowed: Boolean
+  maxDaysBorrowable: Int
+  item: ItemUpdateOneRequiredInput
+  owner: UserUpdateOneInput
+  location: LocationUpdateOneInput
+}
+
+input BorrowingItemUpdateOneRequiredInput {
+  create: BorrowingItemCreateInput
+  connect: BorrowingItemWhereUniqueInput
+  update: BorrowingItemUpdateDataInput
+  upsert: BorrowingItemUpsertNestedInput
+}
+
+input BorrowingItemUpsertNestedInput {
+  update: BorrowingItemUpdateDataInput!
+  create: BorrowingItemCreateInput!
+}
+
+input BorrowingItemWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BorrowingItemWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BorrowingItemWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BorrowingItemWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  image: String
+
+  """All values that are not equal to given value."""
+  image_not: String
+
+  """All values that are contained in given list."""
+  image_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_not_in: [String!]
+
+  """All values less than the given value."""
+  image_lt: String
+
+  """All values less than or equal the given value."""
+  image_lte: String
+
+  """All values greater than the given value."""
+  image_gt: String
+
+  """All values greater than or equal the given value."""
+  image_gte: String
+
+  """All values containing the given string."""
+  image_contains: String
+
+  """All values not containing the given string."""
+  image_not_contains: String
+
+  """All values starting with the given string."""
+  image_starts_with: String
+
+  """All values not starting with the given string."""
+  image_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_ends_with: String
+
+  """All values not ending with the given string."""
+  image_not_ends_with: String
+  largeImage: String
+
+  """All values that are not equal to given value."""
+  largeImage_not: String
+
+  """All values that are contained in given list."""
+  largeImage_in: [String!]
+
+  """All values that are not contained in given list."""
+  largeImage_not_in: [String!]
+
+  """All values less than the given value."""
+  largeImage_lt: String
+
+  """All values less than or equal the given value."""
+  largeImage_lte: String
+
+  """All values greater than the given value."""
+  largeImage_gt: String
+
+  """All values greater than or equal the given value."""
+  largeImage_gte: String
+
+  """All values containing the given string."""
+  largeImage_contains: String
+
+  """All values not containing the given string."""
+  largeImage_not_contains: String
+
+  """All values starting with the given string."""
+  largeImage_starts_with: String
+
+  """All values not starting with the given string."""
+  largeImage_not_starts_with: String
+
+  """All values ending with the given string."""
+  largeImage_ends_with: String
+
+  """All values not ending with the given string."""
+  largeImage_not_ends_with: String
+  cost: Int
+
+  """All values that are not equal to given value."""
+  cost_not: Int
+
+  """All values that are contained in given list."""
+  cost_in: [Int!]
+
+  """All values that are not contained in given list."""
+  cost_not_in: [Int!]
+
+  """All values less than the given value."""
+  cost_lt: Int
+
+  """All values less than or equal the given value."""
+  cost_lte: Int
+
+  """All values greater than the given value."""
+  cost_gt: Int
+
+  """All values greater than or equal the given value."""
+  cost_gte: Int
+  indefiniteBorrowingAllowed: Boolean
+
+  """All values that are not equal to given value."""
+  indefiniteBorrowingAllowed_not: Boolean
+  maxDaysBorrowable: Int
+
+  """All values that are not equal to given value."""
+  maxDaysBorrowable_not: Int
+
+  """All values that are contained in given list."""
+  maxDaysBorrowable_in: [Int!]
+
+  """All values that are not contained in given list."""
+  maxDaysBorrowable_not_in: [Int!]
+
+  """All values less than the given value."""
+  maxDaysBorrowable_lt: Int
+
+  """All values less than or equal the given value."""
+  maxDaysBorrowable_lte: Int
+
+  """All values greater than the given value."""
+  maxDaysBorrowable_gt: Int
+
+  """All values greater than or equal the given value."""
+  maxDaysBorrowable_gte: Int
+  item: ItemWhereInput
+  owner: UserWhereInput
+  location: LocationWhereInput
+}
+
+input BorrowingItemWhereUniqueInput {
+  id: ID
+}
+
+enum BorrowingOrderByInput {
+  id_ASC
+  id_DESC
+  indefinite_ASC
+  indefinite_DESC
+  beginDate_ASC
+  beginDate_DESC
+  endDate_ASC
+  endDate_DESC
+  borrowedAt_ASC
+  borrowedAt_DESC
+  returnedAt_ASC
+  returnedAt_DESC
+  status_ASC
+  status_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BorrowingPreviousValues {
+  id: ID!
+  indefinite: Boolean!
+  beginDate: DateTime!
+  endDate: DateTime!
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus!
+}
+
+enum BorrowingStatus {
+  Begun
+  Confirmed
+  Available
+  Denied
+  Borrowed
+  Overdue
+  Error
+  Returned
+  Ended
+}
+
+type BorrowingSubscriptionPayload {
+  mutation: MutationType!
+  node: Borrowing
+  updatedFields: [String!]
+  previousValues: BorrowingPreviousValues
+}
+
+input BorrowingSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BorrowingSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BorrowingSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BorrowingSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BorrowingWhereInput
+}
+
+input BorrowingUpdateDataInput {
+  indefinite: Boolean
+  beginDate: DateTime
+  endDate: DateTime
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus
+  item: BorrowingItemUpdateOneRequiredInput
+  owner: UserUpdateOneWithoutBorrowingsFromInput
+  borrower: UserUpdateOneWithoutBorrowingsToInput
+  fromLocation: LocationUpdateOneWithoutBorrowingFromInput
+  toLocation: LocationUpdateOneWithoutBorrowingToInput
+}
+
+input BorrowingUpdateInput {
+  indefinite: Boolean
+  beginDate: DateTime
+  endDate: DateTime
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus
+  item: BorrowingItemUpdateOneRequiredInput
+  owner: UserUpdateOneWithoutBorrowingsFromInput
+  borrower: UserUpdateOneWithoutBorrowingsToInput
+  fromLocation: LocationUpdateOneWithoutBorrowingFromInput
+  toLocation: LocationUpdateOneWithoutBorrowingToInput
+}
+
+input BorrowingUpdateManyWithoutBorrowerInput {
+  create: [BorrowingCreateWithoutBorrowerInput!]
+  connect: [BorrowingWhereUniqueInput!]
+  disconnect: [BorrowingWhereUniqueInput!]
+  delete: [BorrowingWhereUniqueInput!]
+  update: [BorrowingUpdateWithWhereUniqueWithoutBorrowerInput!]
+  upsert: [BorrowingUpsertWithWhereUniqueWithoutBorrowerInput!]
+}
+
+input BorrowingUpdateManyWithoutOwnerInput {
+  create: [BorrowingCreateWithoutOwnerInput!]
+  connect: [BorrowingWhereUniqueInput!]
+  disconnect: [BorrowingWhereUniqueInput!]
+  delete: [BorrowingWhereUniqueInput!]
+  update: [BorrowingUpdateWithWhereUniqueWithoutOwnerInput!]
+  upsert: [BorrowingUpsertWithWhereUniqueWithoutOwnerInput!]
+}
+
+input BorrowingUpdateOneInput {
+  create: BorrowingCreateInput
+  connect: BorrowingWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: BorrowingUpdateDataInput
+  upsert: BorrowingUpsertNestedInput
+}
+
+input BorrowingUpdateOneWithoutFromLocationInput {
+  create: BorrowingCreateWithoutFromLocationInput
+  connect: BorrowingWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: BorrowingUpdateWithoutFromLocationDataInput
+  upsert: BorrowingUpsertWithoutFromLocationInput
+}
+
+input BorrowingUpdateOneWithoutToLocationInput {
+  create: BorrowingCreateWithoutToLocationInput
+  connect: BorrowingWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: BorrowingUpdateWithoutToLocationDataInput
+  upsert: BorrowingUpsertWithoutToLocationInput
+}
+
+input BorrowingUpdateWithoutBorrowerDataInput {
+  indefinite: Boolean
+  beginDate: DateTime
+  endDate: DateTime
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus
+  item: BorrowingItemUpdateOneRequiredInput
+  owner: UserUpdateOneWithoutBorrowingsFromInput
+  fromLocation: LocationUpdateOneWithoutBorrowingFromInput
+  toLocation: LocationUpdateOneWithoutBorrowingToInput
+}
+
+input BorrowingUpdateWithoutFromLocationDataInput {
+  indefinite: Boolean
+  beginDate: DateTime
+  endDate: DateTime
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus
+  item: BorrowingItemUpdateOneRequiredInput
+  owner: UserUpdateOneWithoutBorrowingsFromInput
+  borrower: UserUpdateOneWithoutBorrowingsToInput
+  toLocation: LocationUpdateOneWithoutBorrowingToInput
+}
+
+input BorrowingUpdateWithoutOwnerDataInput {
+  indefinite: Boolean
+  beginDate: DateTime
+  endDate: DateTime
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus
+  item: BorrowingItemUpdateOneRequiredInput
+  borrower: UserUpdateOneWithoutBorrowingsToInput
+  fromLocation: LocationUpdateOneWithoutBorrowingFromInput
+  toLocation: LocationUpdateOneWithoutBorrowingToInput
+}
+
+input BorrowingUpdateWithoutToLocationDataInput {
+  indefinite: Boolean
+  beginDate: DateTime
+  endDate: DateTime
+  borrowedAt: DateTime
+  returnedAt: DateTime
+  status: BorrowingStatus
+  item: BorrowingItemUpdateOneRequiredInput
+  owner: UserUpdateOneWithoutBorrowingsFromInput
+  borrower: UserUpdateOneWithoutBorrowingsToInput
+  fromLocation: LocationUpdateOneWithoutBorrowingFromInput
+}
+
+input BorrowingUpdateWithWhereUniqueWithoutBorrowerInput {
+  where: BorrowingWhereUniqueInput!
+  data: BorrowingUpdateWithoutBorrowerDataInput!
+}
+
+input BorrowingUpdateWithWhereUniqueWithoutOwnerInput {
+  where: BorrowingWhereUniqueInput!
+  data: BorrowingUpdateWithoutOwnerDataInput!
+}
+
+input BorrowingUpsertNestedInput {
+  update: BorrowingUpdateDataInput!
+  create: BorrowingCreateInput!
+}
+
+input BorrowingUpsertWithoutFromLocationInput {
+  update: BorrowingUpdateWithoutFromLocationDataInput!
+  create: BorrowingCreateWithoutFromLocationInput!
+}
+
+input BorrowingUpsertWithoutToLocationInput {
+  update: BorrowingUpdateWithoutToLocationDataInput!
+  create: BorrowingCreateWithoutToLocationInput!
+}
+
+input BorrowingUpsertWithWhereUniqueWithoutBorrowerInput {
+  where: BorrowingWhereUniqueInput!
+  update: BorrowingUpdateWithoutBorrowerDataInput!
+  create: BorrowingCreateWithoutBorrowerInput!
+}
+
+input BorrowingUpsertWithWhereUniqueWithoutOwnerInput {
+  where: BorrowingWhereUniqueInput!
+  update: BorrowingUpdateWithoutOwnerDataInput!
+  create: BorrowingCreateWithoutOwnerInput!
+}
+
+input BorrowingWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BorrowingWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BorrowingWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BorrowingWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  indefinite: Boolean
+
+  """All values that are not equal to given value."""
+  indefinite_not: Boolean
+  beginDate: DateTime
+
+  """All values that are not equal to given value."""
+  beginDate_not: DateTime
+
+  """All values that are contained in given list."""
+  beginDate_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  beginDate_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  beginDate_lt: DateTime
+
+  """All values less than or equal the given value."""
+  beginDate_lte: DateTime
+
+  """All values greater than the given value."""
+  beginDate_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  beginDate_gte: DateTime
+  endDate: DateTime
+
+  """All values that are not equal to given value."""
+  endDate_not: DateTime
+
+  """All values that are contained in given list."""
+  endDate_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  endDate_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  endDate_lt: DateTime
+
+  """All values less than or equal the given value."""
+  endDate_lte: DateTime
+
+  """All values greater than the given value."""
+  endDate_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  endDate_gte: DateTime
+  borrowedAt: DateTime
+
+  """All values that are not equal to given value."""
+  borrowedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  borrowedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  borrowedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  borrowedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  borrowedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  borrowedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  borrowedAt_gte: DateTime
+  returnedAt: DateTime
+
+  """All values that are not equal to given value."""
+  returnedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  returnedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  returnedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  returnedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  returnedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  returnedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  returnedAt_gte: DateTime
+  status: BorrowingStatus
+
+  """All values that are not equal to given value."""
+  status_not: BorrowingStatus
+
+  """All values that are contained in given list."""
+  status_in: [BorrowingStatus!]
+
+  """All values that are not contained in given list."""
+  status_not_in: [BorrowingStatus!]
+  item: BorrowingItemWhereInput
+  owner: UserWhereInput
+  borrower: UserWhereInput
+  fromLocation: LocationWhereInput
+  toLocation: LocationWhereInput
+}
+
+input BorrowingWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+type Item implements Node {
+  id: ID!
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  cost: Int!
+  owner(where: UserWhereInput): User
+  currentBorrower(where: UserWhereInput): User
+  indefiniteBorrowingAllowed: Boolean!
+  maxDaysBorrowable: Int!
+  status: ItemStatus!
+  location(where: LocationWhereInput): Location
+}
+
+"""A connection to a list of items."""
+type ItemConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ItemEdge]!
+  aggregate: AggregateItem!
+}
+
+input ItemCreateInput {
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  cost: Int!
+  indefiniteBorrowingAllowed: Boolean
+  maxDaysBorrowable: Int!
+  status: ItemStatus!
+  owner: UserCreateOneWithoutItemsOwnedInput
+  currentBorrower: UserCreateOneWithoutItemsBorrowingInput
+  location: LocationCreateOneInput
+}
+
+input ItemCreateManyWithoutCurrentBorrowerInput {
+  create: [ItemCreateWithoutCurrentBorrowerInput!]
+  connect: [ItemWhereUniqueInput!]
+}
+
+input ItemCreateManyWithoutOwnerInput {
+  create: [ItemCreateWithoutOwnerInput!]
+  connect: [ItemWhereUniqueInput!]
+}
+
+input ItemCreateOneInput {
+  create: ItemCreateInput
+  connect: ItemWhereUniqueInput
+}
+
+input ItemCreateWithoutCurrentBorrowerInput {
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  cost: Int!
+  indefiniteBorrowingAllowed: Boolean
+  maxDaysBorrowable: Int!
+  status: ItemStatus!
+  owner: UserCreateOneWithoutItemsOwnedInput
+  location: LocationCreateOneInput
+}
+
+input ItemCreateWithoutOwnerInput {
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  cost: Int!
+  indefiniteBorrowingAllowed: Boolean
+  maxDaysBorrowable: Int!
+  status: ItemStatus!
+  currentBorrower: UserCreateOneWithoutItemsBorrowingInput
+  location: LocationCreateOneInput
+}
+
+"""An edge in a connection."""
+type ItemEdge {
+  """The item at the end of the edge."""
+  node: Item!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ItemOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  description_ASC
+  description_DESC
+  image_ASC
+  image_DESC
+  largeImage_ASC
+  largeImage_DESC
+  cost_ASC
+  cost_DESC
+  indefiniteBorrowingAllowed_ASC
+  indefiniteBorrowingAllowed_DESC
+  maxDaysBorrowable_ASC
+  maxDaysBorrowable_DESC
+  status_ASC
+  status_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ItemPreviousValues {
+  id: ID!
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  cost: Int!
+  indefiniteBorrowingAllowed: Boolean!
+  maxDaysBorrowable: Int!
+  status: ItemStatus!
+}
+
+enum ItemStatus {
+  Created
+  Available
+  Borrowed
+  Lost
+  Destroyed
+  Overdue
+  Withdrawn
+}
+
+type ItemSubscriptionPayload {
+  mutation: MutationType!
+  node: Item
+  updatedFields: [String!]
+  previousValues: ItemPreviousValues
+}
+
+input ItemSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ItemSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ItemSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ItemSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ItemWhereInput
+}
+
+input ItemUpdateDataInput {
+  title: String
+  description: String
+  image: String
+  largeImage: String
+  cost: Int
+  indefiniteBorrowingAllowed: Boolean
+  maxDaysBorrowable: Int
+  status: ItemStatus
+  owner: UserUpdateOneWithoutItemsOwnedInput
+  currentBorrower: UserUpdateOneWithoutItemsBorrowingInput
+  location: LocationUpdateOneInput
+}
+
+input ItemUpdateInput {
+  title: String
+  description: String
+  image: String
+  largeImage: String
+  cost: Int
+  indefiniteBorrowingAllowed: Boolean
+  maxDaysBorrowable: Int
+  status: ItemStatus
+  owner: UserUpdateOneWithoutItemsOwnedInput
+  currentBorrower: UserUpdateOneWithoutItemsBorrowingInput
+  location: LocationUpdateOneInput
+}
+
+input ItemUpdateManyWithoutCurrentBorrowerInput {
+  create: [ItemCreateWithoutCurrentBorrowerInput!]
+  connect: [ItemWhereUniqueInput!]
+  disconnect: [ItemWhereUniqueInput!]
+  delete: [ItemWhereUniqueInput!]
+  update: [ItemUpdateWithWhereUniqueWithoutCurrentBorrowerInput!]
+  upsert: [ItemUpsertWithWhereUniqueWithoutCurrentBorrowerInput!]
+}
+
+input ItemUpdateManyWithoutOwnerInput {
+  create: [ItemCreateWithoutOwnerInput!]
+  connect: [ItemWhereUniqueInput!]
+  disconnect: [ItemWhereUniqueInput!]
+  delete: [ItemWhereUniqueInput!]
+  update: [ItemUpdateWithWhereUniqueWithoutOwnerInput!]
+  upsert: [ItemUpsertWithWhereUniqueWithoutOwnerInput!]
+}
+
+input ItemUpdateOneRequiredInput {
+  create: ItemCreateInput
+  connect: ItemWhereUniqueInput
+  update: ItemUpdateDataInput
+  upsert: ItemUpsertNestedInput
+}
+
+input ItemUpdateWithoutCurrentBorrowerDataInput {
+  title: String
+  description: String
+  image: String
+  largeImage: String
+  cost: Int
+  indefiniteBorrowingAllowed: Boolean
+  maxDaysBorrowable: Int
+  status: ItemStatus
+  owner: UserUpdateOneWithoutItemsOwnedInput
+  location: LocationUpdateOneInput
+}
+
+input ItemUpdateWithoutOwnerDataInput {
+  title: String
+  description: String
+  image: String
+  largeImage: String
+  cost: Int
+  indefiniteBorrowingAllowed: Boolean
+  maxDaysBorrowable: Int
+  status: ItemStatus
+  currentBorrower: UserUpdateOneWithoutItemsBorrowingInput
+  location: LocationUpdateOneInput
+}
+
+input ItemUpdateWithWhereUniqueWithoutCurrentBorrowerInput {
+  where: ItemWhereUniqueInput!
+  data: ItemUpdateWithoutCurrentBorrowerDataInput!
+}
+
+input ItemUpdateWithWhereUniqueWithoutOwnerInput {
+  where: ItemWhereUniqueInput!
+  data: ItemUpdateWithoutOwnerDataInput!
+}
+
+input ItemUpsertNestedInput {
+  update: ItemUpdateDataInput!
+  create: ItemCreateInput!
+}
+
+input ItemUpsertWithWhereUniqueWithoutCurrentBorrowerInput {
+  where: ItemWhereUniqueInput!
+  update: ItemUpdateWithoutCurrentBorrowerDataInput!
+  create: ItemCreateWithoutCurrentBorrowerInput!
+}
+
+input ItemUpsertWithWhereUniqueWithoutOwnerInput {
+  where: ItemWhereUniqueInput!
+  update: ItemUpdateWithoutOwnerDataInput!
+  create: ItemCreateWithoutOwnerInput!
+}
+
+input ItemWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ItemWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ItemWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ItemWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  image: String
+
+  """All values that are not equal to given value."""
+  image_not: String
+
+  """All values that are contained in given list."""
+  image_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_not_in: [String!]
+
+  """All values less than the given value."""
+  image_lt: String
+
+  """All values less than or equal the given value."""
+  image_lte: String
+
+  """All values greater than the given value."""
+  image_gt: String
+
+  """All values greater than or equal the given value."""
+  image_gte: String
+
+  """All values containing the given string."""
+  image_contains: String
+
+  """All values not containing the given string."""
+  image_not_contains: String
+
+  """All values starting with the given string."""
+  image_starts_with: String
+
+  """All values not starting with the given string."""
+  image_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_ends_with: String
+
+  """All values not ending with the given string."""
+  image_not_ends_with: String
+  largeImage: String
+
+  """All values that are not equal to given value."""
+  largeImage_not: String
+
+  """All values that are contained in given list."""
+  largeImage_in: [String!]
+
+  """All values that are not contained in given list."""
+  largeImage_not_in: [String!]
+
+  """All values less than the given value."""
+  largeImage_lt: String
+
+  """All values less than or equal the given value."""
+  largeImage_lte: String
+
+  """All values greater than the given value."""
+  largeImage_gt: String
+
+  """All values greater than or equal the given value."""
+  largeImage_gte: String
+
+  """All values containing the given string."""
+  largeImage_contains: String
+
+  """All values not containing the given string."""
+  largeImage_not_contains: String
+
+  """All values starting with the given string."""
+  largeImage_starts_with: String
+
+  """All values not starting with the given string."""
+  largeImage_not_starts_with: String
+
+  """All values ending with the given string."""
+  largeImage_ends_with: String
+
+  """All values not ending with the given string."""
+  largeImage_not_ends_with: String
+  cost: Int
+
+  """All values that are not equal to given value."""
+  cost_not: Int
+
+  """All values that are contained in given list."""
+  cost_in: [Int!]
+
+  """All values that are not contained in given list."""
+  cost_not_in: [Int!]
+
+  """All values less than the given value."""
+  cost_lt: Int
+
+  """All values less than or equal the given value."""
+  cost_lte: Int
+
+  """All values greater than the given value."""
+  cost_gt: Int
+
+  """All values greater than or equal the given value."""
+  cost_gte: Int
+  indefiniteBorrowingAllowed: Boolean
+
+  """All values that are not equal to given value."""
+  indefiniteBorrowingAllowed_not: Boolean
+  maxDaysBorrowable: Int
+
+  """All values that are not equal to given value."""
+  maxDaysBorrowable_not: Int
+
+  """All values that are contained in given list."""
+  maxDaysBorrowable_in: [Int!]
+
+  """All values that are not contained in given list."""
+  maxDaysBorrowable_not_in: [Int!]
+
+  """All values less than the given value."""
+  maxDaysBorrowable_lt: Int
+
+  """All values less than or equal the given value."""
+  maxDaysBorrowable_lte: Int
+
+  """All values greater than the given value."""
+  maxDaysBorrowable_gt: Int
+
+  """All values greater than or equal the given value."""
+  maxDaysBorrowable_gte: Int
+  status: ItemStatus
+
+  """All values that are not equal to given value."""
+  status_not: ItemStatus
+
+  """All values that are contained in given list."""
+  status_in: [ItemStatus!]
+
+  """All values that are not contained in given list."""
+  status_not_in: [ItemStatus!]
+  owner: UserWhereInput
+  currentBorrower: UserWhereInput
+  location: LocationWhereInput
+}
+
+input ItemWhereUniqueInput {
+  id: ID
+}
+
+type Location implements Node {
+  id: ID!
+  latitude: Float!
+  longitude: Float!
+  borrowingFrom(where: BorrowingWhereInput): Borrowing
+  borrowingTo(where: BorrowingWhereInput): Borrowing
+}
+
+"""A connection to a list of items."""
+type LocationConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [LocationEdge]!
+  aggregate: AggregateLocation!
+}
+
+input LocationCreateInput {
+  latitude: Float!
+  longitude: Float!
+  borrowingFrom: BorrowingCreateOneWithoutFromLocationInput
+  borrowingTo: BorrowingCreateOneWithoutToLocationInput
+}
+
+input LocationCreateOneInput {
+  create: LocationCreateInput
+  connect: LocationWhereUniqueInput
+}
+
+input LocationCreateOneWithoutBorrowingFromInput {
+  create: LocationCreateWithoutBorrowingFromInput
+  connect: LocationWhereUniqueInput
+}
+
+input LocationCreateOneWithoutBorrowingToInput {
+  create: LocationCreateWithoutBorrowingToInput
+  connect: LocationWhereUniqueInput
+}
+
+input LocationCreateWithoutBorrowingFromInput {
+  latitude: Float!
+  longitude: Float!
+  borrowingTo: BorrowingCreateOneWithoutToLocationInput
+}
+
+input LocationCreateWithoutBorrowingToInput {
+  latitude: Float!
+  longitude: Float!
+  borrowingFrom: BorrowingCreateOneWithoutFromLocationInput
+}
+
+"""An edge in a connection."""
+type LocationEdge {
+  """The item at the end of the edge."""
+  node: Location!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum LocationOrderByInput {
+  id_ASC
+  id_DESC
+  latitude_ASC
+  latitude_DESC
+  longitude_ASC
+  longitude_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type LocationPreviousValues {
+  id: ID!
+  latitude: Float!
+  longitude: Float!
+}
+
+type LocationSubscriptionPayload {
+  mutation: MutationType!
+  node: Location
+  updatedFields: [String!]
+  previousValues: LocationPreviousValues
+}
+
+input LocationSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [LocationSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [LocationSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [LocationSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: LocationWhereInput
+}
+
+input LocationUpdateDataInput {
+  latitude: Float
+  longitude: Float
+  borrowingFrom: BorrowingUpdateOneWithoutFromLocationInput
+  borrowingTo: BorrowingUpdateOneWithoutToLocationInput
+}
+
+input LocationUpdateInput {
+  latitude: Float
+  longitude: Float
+  borrowingFrom: BorrowingUpdateOneWithoutFromLocationInput
+  borrowingTo: BorrowingUpdateOneWithoutToLocationInput
+}
+
+input LocationUpdateOneInput {
+  create: LocationCreateInput
+  connect: LocationWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: LocationUpdateDataInput
+  upsert: LocationUpsertNestedInput
+}
+
+input LocationUpdateOneWithoutBorrowingFromInput {
+  create: LocationCreateWithoutBorrowingFromInput
+  connect: LocationWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: LocationUpdateWithoutBorrowingFromDataInput
+  upsert: LocationUpsertWithoutBorrowingFromInput
+}
+
+input LocationUpdateOneWithoutBorrowingToInput {
+  create: LocationCreateWithoutBorrowingToInput
+  connect: LocationWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: LocationUpdateWithoutBorrowingToDataInput
+  upsert: LocationUpsertWithoutBorrowingToInput
+}
+
+input LocationUpdateWithoutBorrowingFromDataInput {
+  latitude: Float
+  longitude: Float
+  borrowingTo: BorrowingUpdateOneWithoutToLocationInput
+}
+
+input LocationUpdateWithoutBorrowingToDataInput {
+  latitude: Float
+  longitude: Float
+  borrowingFrom: BorrowingUpdateOneWithoutFromLocationInput
+}
+
+input LocationUpsertNestedInput {
+  update: LocationUpdateDataInput!
+  create: LocationCreateInput!
+}
+
+input LocationUpsertWithoutBorrowingFromInput {
+  update: LocationUpdateWithoutBorrowingFromDataInput!
+  create: LocationCreateWithoutBorrowingFromInput!
+}
+
+input LocationUpsertWithoutBorrowingToInput {
+  update: LocationUpdateWithoutBorrowingToDataInput!
+  create: LocationCreateWithoutBorrowingToInput!
+}
+
+input LocationWhereInput {
+  """Logical AND on all given filters."""
+  AND: [LocationWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [LocationWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [LocationWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  latitude: Float
+
+  """All values that are not equal to given value."""
+  latitude_not: Float
+
+  """All values that are contained in given list."""
+  latitude_in: [Float!]
+
+  """All values that are not contained in given list."""
+  latitude_not_in: [Float!]
+
+  """All values less than the given value."""
+  latitude_lt: Float
+
+  """All values less than or equal the given value."""
+  latitude_lte: Float
+
+  """All values greater than the given value."""
+  latitude_gt: Float
+
+  """All values greater than or equal the given value."""
+  latitude_gte: Float
+  longitude: Float
+
+  """All values that are not equal to given value."""
+  longitude_not: Float
+
+  """All values that are contained in given list."""
+  longitude_in: [Float!]
+
+  """All values that are not contained in given list."""
+  longitude_not_in: [Float!]
+
+  """All values less than the given value."""
+  longitude_lt: Float
+
+  """All values less than or equal the given value."""
+  longitude_lte: Float
+
+  """All values greater than the given value."""
+  longitude_gt: Float
+
+  """All values greater than or equal the given value."""
+  longitude_gte: Float
+  borrowingFrom: BorrowingWhereInput
+  borrowingTo: BorrowingWhereInput
+}
+
+input LocationWhereUniqueInput {
+  id: ID
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Message {
+  borrowing(where: BorrowingWhereInput): Borrowing
+  contents: String
+  sentAt: DateTime
+  readAt: DateTime
+  status: MessageStatus!
+  fromUser(where: UserWhereInput): User!
+  toUser(where: UserWhereInput): User!
+}
+
+"""A connection to a list of items."""
+type MessageConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [MessageEdge]!
+  aggregate: AggregateMessage!
+}
+
+input MessageCreateInput {
+  contents: String
+  sentAt: DateTime
+  readAt: DateTime
+  status: MessageStatus!
+  borrowing: BorrowingCreateOneInput
+  fromUser: UserCreateOneWithoutMessagesFromInput!
+  toUser: UserCreateOneWithoutMessagesToInput!
+}
+
+input MessageCreateManyWithoutFromUserInput {
+  create: [MessageCreateWithoutFromUserInput!]
+}
+
+input MessageCreateManyWithoutToUserInput {
+  create: [MessageCreateWithoutToUserInput!]
+}
+
+input MessageCreateWithoutFromUserInput {
+  contents: String
+  sentAt: DateTime
+  readAt: DateTime
+  status: MessageStatus!
+  borrowing: BorrowingCreateOneInput
+  toUser: UserCreateOneWithoutMessagesToInput!
+}
+
+input MessageCreateWithoutToUserInput {
+  contents: String
+  sentAt: DateTime
+  readAt: DateTime
+  status: MessageStatus!
+  borrowing: BorrowingCreateOneInput
+  fromUser: UserCreateOneWithoutMessagesFromInput!
+}
+
+"""An edge in a connection."""
+type MessageEdge {
+  """The item at the end of the edge."""
+  node: Message!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum MessageOrderByInput {
+  contents_ASC
+  contents_DESC
+  sentAt_ASC
+  sentAt_DESC
+  readAt_ASC
+  readAt_DESC
+  status_ASC
+  status_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type MessagePreviousValues {
+  contents: String
+  sentAt: DateTime
+  readAt: DateTime
+  status: MessageStatus!
+}
+
+enum MessageStatus {
+  Created
+  Saved
+  Sent
+  Received
+  Read
+  Error
+}
+
+type MessageSubscriptionPayload {
+  mutation: MutationType!
+  node: Message
+  updatedFields: [String!]
+  previousValues: MessagePreviousValues
+}
+
+input MessageSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MessageSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MessageSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MessageSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: MessageWhereInput
+}
+
+input MessageUpdateInput {
+  contents: String
+  sentAt: DateTime
+  readAt: DateTime
+  status: MessageStatus
+  borrowing: BorrowingUpdateOneInput
+  fromUser: UserUpdateOneRequiredWithoutMessagesFromInput
+  toUser: UserUpdateOneRequiredWithoutMessagesToInput
+}
+
+input MessageUpdateManyWithoutFromUserInput {
+  create: [MessageCreateWithoutFromUserInput!]
+}
+
+input MessageUpdateManyWithoutToUserInput {
+  create: [MessageCreateWithoutToUserInput!]
+}
+
+input MessageWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MessageWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MessageWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MessageWhereInput!]
+  contents: String
+
+  """All values that are not equal to given value."""
+  contents_not: String
+
+  """All values that are contained in given list."""
+  contents_in: [String!]
+
+  """All values that are not contained in given list."""
+  contents_not_in: [String!]
+
+  """All values less than the given value."""
+  contents_lt: String
+
+  """All values less than or equal the given value."""
+  contents_lte: String
+
+  """All values greater than the given value."""
+  contents_gt: String
+
+  """All values greater than or equal the given value."""
+  contents_gte: String
+
+  """All values containing the given string."""
+  contents_contains: String
+
+  """All values not containing the given string."""
+  contents_not_contains: String
+
+  """All values starting with the given string."""
+  contents_starts_with: String
+
+  """All values not starting with the given string."""
+  contents_not_starts_with: String
+
+  """All values ending with the given string."""
+  contents_ends_with: String
+
+  """All values not ending with the given string."""
+  contents_not_ends_with: String
+  sentAt: DateTime
+
+  """All values that are not equal to given value."""
+  sentAt_not: DateTime
+
+  """All values that are contained in given list."""
+  sentAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  sentAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  sentAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  sentAt_lte: DateTime
+
+  """All values greater than the given value."""
+  sentAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  sentAt_gte: DateTime
+  readAt: DateTime
+
+  """All values that are not equal to given value."""
+  readAt_not: DateTime
+
+  """All values that are contained in given list."""
+  readAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  readAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  readAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  readAt_lte: DateTime
+
+  """All values greater than the given value."""
+  readAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  readAt_gte: DateTime
+  status: MessageStatus
+
+  """All values that are not equal to given value."""
+  status_not: MessageStatus
+
+  """All values that are contained in given list."""
+  status_in: [MessageStatus!]
+
+  """All values that are not contained in given list."""
+  status_not_in: [MessageStatus!]
+  borrowing: BorrowingWhereInput
+  fromUser: UserWhereInput
+  toUser: UserWhereInput
+}
+
+type Mutation {
+  createMessage(data: MessageCreateInput!): Message!
+  createItem(data: ItemCreateInput!): Item!
+  createBorrowing(data: BorrowingCreateInput!): Borrowing!
+  createUser(data: UserCreateInput!): User!
+  createLocation(data: LocationCreateInput!): Location!
+  createBorrowingItem(data: BorrowingItemCreateInput!): BorrowingItem!
+  createAddress(data: AddressCreateInput!): Address!
+  updateItem(data: ItemUpdateInput!, where: ItemWhereUniqueInput!): Item
+  updateBorrowing(data: BorrowingUpdateInput!, where: BorrowingWhereUniqueInput!): Borrowing
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateLocation(data: LocationUpdateInput!, where: LocationWhereUniqueInput!): Location
+  updateBorrowingItem(data: BorrowingItemUpdateInput!, where: BorrowingItemWhereUniqueInput!): BorrowingItem
+  updateAddress(data: AddressUpdateInput!, where: AddressWhereUniqueInput!): Address
+  deleteItem(where: ItemWhereUniqueInput!): Item
+  deleteBorrowing(where: BorrowingWhereUniqueInput!): Borrowing
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteLocation(where: LocationWhereUniqueInput!): Location
+  deleteBorrowingItem(where: BorrowingItemWhereUniqueInput!): BorrowingItem
+  deleteAddress(where: AddressWhereUniqueInput!): Address
+  upsertItem(where: ItemWhereUniqueInput!, create: ItemCreateInput!, update: ItemUpdateInput!): Item!
+  upsertBorrowing(where: BorrowingWhereUniqueInput!, create: BorrowingCreateInput!, update: BorrowingUpdateInput!): Borrowing!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertLocation(where: LocationWhereUniqueInput!, create: LocationCreateInput!, update: LocationUpdateInput!): Location!
+  upsertBorrowingItem(where: BorrowingItemWhereUniqueInput!, create: BorrowingItemCreateInput!, update: BorrowingItemUpdateInput!): BorrowingItem!
+  upsertAddress(where: AddressWhereUniqueInput!, create: AddressCreateInput!, update: AddressUpdateInput!): Address!
+  updateManyMessages(data: MessageUpdateInput!, where: MessageWhereInput): BatchPayload!
+  updateManyItems(data: ItemUpdateInput!, where: ItemWhereInput): BatchPayload!
+  updateManyBorrowings(data: BorrowingUpdateInput!, where: BorrowingWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
+  updateManyLocations(data: LocationUpdateInput!, where: LocationWhereInput): BatchPayload!
+  updateManyBorrowingItems(data: BorrowingItemUpdateInput!, where: BorrowingItemWhereInput): BatchPayload!
+  updateManyAddresses(data: AddressUpdateInput!, where: AddressWhereInput): BatchPayload!
+  deleteManyMessages(where: MessageWhereInput): BatchPayload!
+  deleteManyItems(where: ItemWhereInput): BatchPayload!
+  deleteManyBorrowings(where: BorrowingWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyLocations(where: LocationWhereInput): BatchPayload!
+  deleteManyBorrowingItems(where: BorrowingItemWhereInput): BatchPayload!
+  deleteManyAddresses(where: AddressWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+enum Permission {
+  ADMIN
+  USER
+  ITEMCREATE
+  ITEMRENT
+  PERMISSIONUPDATE
+}
+
+type Query {
+  messages(where: MessageWhereInput, orderBy: MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Message]!
+  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item]!
+  borrowings(where: BorrowingWhereInput, orderBy: BorrowingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Borrowing]!
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location]!
+  borrowingItems(where: BorrowingItemWhereInput, orderBy: BorrowingItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BorrowingItem]!
+  addresses(where: AddressWhereInput, orderBy: AddressOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Address]!
+  item(where: ItemWhereUniqueInput!): Item
+  borrowing(where: BorrowingWhereUniqueInput!): Borrowing
+  user(where: UserWhereUniqueInput!): User
+  location(where: LocationWhereUniqueInput!): Location
+  borrowingItem(where: BorrowingItemWhereUniqueInput!): BorrowingItem
+  address(where: AddressWhereUniqueInput!): Address
+  messagesConnection(where: MessageWhereInput, orderBy: MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): MessageConnection!
+  itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
+  borrowingsConnection(where: BorrowingWhereInput, orderBy: BorrowingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BorrowingConnection!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  locationsConnection(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LocationConnection!
+  borrowingItemsConnection(where: BorrowingItemWhereInput, orderBy: BorrowingItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BorrowingItemConnection!
+  addressesConnection(where: AddressWhereInput, orderBy: AddressOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AddressConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Subscription {
+  message(where: MessageSubscriptionWhereInput): MessageSubscriptionPayload
+  item(where: ItemSubscriptionWhereInput): ItemSubscriptionPayload
+  borrowing(where: BorrowingSubscriptionWhereInput): BorrowingSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  location(where: LocationSubscriptionWhereInput): LocationSubscriptionPayload
+  borrowingItem(where: BorrowingItemSubscriptionWhereInput): BorrowingItemSubscriptionPayload
+  address(where: AddressSubscriptionWhereInput): AddressSubscriptionPayload
+}
+
+type User implements Node {
+  id: ID!
+  name: String!
+  Active: Boolean
+  email: String!
+  displayName: String!
+  image: String
+  largeImage: String
+  phone: String
+  password: String!
+  permissions: [Permission!]!
+  location(where: LocationWhereInput): Location
+  address(where: AddressWhereInput): Address
+  itemsOwned(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item!]
+  itemsBorrowing(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item!]
+  borrowingsFrom(where: BorrowingWhereInput, orderBy: BorrowingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Borrowing!]
+  borrowingsTo(where: BorrowingWhereInput, orderBy: BorrowingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Borrowing!]
+  messagesFrom(where: MessageWhereInput, orderBy: MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Message!]
+  messagesTo(where: MessageWhereInput, orderBy: MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Message!]
+}
+
+"""A connection to a list of items."""
+type UserConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  name: String!
+  Active: Boolean
+  email: String!
+  displayName: String!
+  image: String
+  largeImage: String
+  phone: String
+  password: String!
+  permissions: UserCreatepermissionsInput
+  location: LocationCreateOneInput
+  address: AddressCreateOneInput
+  itemsOwned: ItemCreateManyWithoutOwnerInput
+  itemsBorrowing: ItemCreateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingCreateManyWithoutOwnerInput
+  borrowingsTo: BorrowingCreateManyWithoutBorrowerInput
+  messagesFrom: MessageCreateManyWithoutFromUserInput
+  messagesTo: MessageCreateManyWithoutToUserInput
+}
+
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutBorrowingsFromInput {
+  create: UserCreateWithoutBorrowingsFromInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutBorrowingsToInput {
+  create: UserCreateWithoutBorrowingsToInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutItemsBorrowingInput {
+  create: UserCreateWithoutItemsBorrowingInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutItemsOwnedInput {
+  create: UserCreateWithoutItemsOwnedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutMessagesFromInput {
+  create: UserCreateWithoutMessagesFromInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutMessagesToInput {
+  create: UserCreateWithoutMessagesToInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreatepermissionsInput {
+  set: [Permission!]
+}
+
+input UserCreateWithoutBorrowingsFromInput {
+  name: String!
+  Active: Boolean
+  email: String!
+  displayName: String!
+  image: String
+  largeImage: String
+  phone: String
+  password: String!
+  permissions: UserCreatepermissionsInput
+  location: LocationCreateOneInput
+  address: AddressCreateOneInput
+  itemsOwned: ItemCreateManyWithoutOwnerInput
+  itemsBorrowing: ItemCreateManyWithoutCurrentBorrowerInput
+  borrowingsTo: BorrowingCreateManyWithoutBorrowerInput
+  messagesFrom: MessageCreateManyWithoutFromUserInput
+  messagesTo: MessageCreateManyWithoutToUserInput
+}
+
+input UserCreateWithoutBorrowingsToInput {
+  name: String!
+  Active: Boolean
+  email: String!
+  displayName: String!
+  image: String
+  largeImage: String
+  phone: String
+  password: String!
+  permissions: UserCreatepermissionsInput
+  location: LocationCreateOneInput
+  address: AddressCreateOneInput
+  itemsOwned: ItemCreateManyWithoutOwnerInput
+  itemsBorrowing: ItemCreateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingCreateManyWithoutOwnerInput
+  messagesFrom: MessageCreateManyWithoutFromUserInput
+  messagesTo: MessageCreateManyWithoutToUserInput
+}
+
+input UserCreateWithoutItemsBorrowingInput {
+  name: String!
+  Active: Boolean
+  email: String!
+  displayName: String!
+  image: String
+  largeImage: String
+  phone: String
+  password: String!
+  permissions: UserCreatepermissionsInput
+  location: LocationCreateOneInput
+  address: AddressCreateOneInput
+  itemsOwned: ItemCreateManyWithoutOwnerInput
+  borrowingsFrom: BorrowingCreateManyWithoutOwnerInput
+  borrowingsTo: BorrowingCreateManyWithoutBorrowerInput
+  messagesFrom: MessageCreateManyWithoutFromUserInput
+  messagesTo: MessageCreateManyWithoutToUserInput
+}
+
+input UserCreateWithoutItemsOwnedInput {
+  name: String!
+  Active: Boolean
+  email: String!
+  displayName: String!
+  image: String
+  largeImage: String
+  phone: String
+  password: String!
+  permissions: UserCreatepermissionsInput
+  location: LocationCreateOneInput
+  address: AddressCreateOneInput
+  itemsBorrowing: ItemCreateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingCreateManyWithoutOwnerInput
+  borrowingsTo: BorrowingCreateManyWithoutBorrowerInput
+  messagesFrom: MessageCreateManyWithoutFromUserInput
+  messagesTo: MessageCreateManyWithoutToUserInput
+}
+
+input UserCreateWithoutMessagesFromInput {
+  name: String!
+  Active: Boolean
+  email: String!
+  displayName: String!
+  image: String
+  largeImage: String
+  phone: String
+  password: String!
+  permissions: UserCreatepermissionsInput
+  location: LocationCreateOneInput
+  address: AddressCreateOneInput
+  itemsOwned: ItemCreateManyWithoutOwnerInput
+  itemsBorrowing: ItemCreateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingCreateManyWithoutOwnerInput
+  borrowingsTo: BorrowingCreateManyWithoutBorrowerInput
+  messagesTo: MessageCreateManyWithoutToUserInput
+}
+
+input UserCreateWithoutMessagesToInput {
+  name: String!
+  Active: Boolean
+  email: String!
+  displayName: String!
+  image: String
+  largeImage: String
+  phone: String
+  password: String!
+  permissions: UserCreatepermissionsInput
+  location: LocationCreateOneInput
+  address: AddressCreateOneInput
+  itemsOwned: ItemCreateManyWithoutOwnerInput
+  itemsBorrowing: ItemCreateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingCreateManyWithoutOwnerInput
+  borrowingsTo: BorrowingCreateManyWithoutBorrowerInput
+  messagesFrom: MessageCreateManyWithoutFromUserInput
+}
+
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge."""
+  node: User!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  Active_ASC
+  Active_DESC
+  email_ASC
+  email_DESC
+  displayName_ASC
+  displayName_DESC
+  image_ASC
+  image_DESC
+  largeImage_ASC
+  largeImage_DESC
+  phone_ASC
+  phone_DESC
+  password_ASC
+  password_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  name: String!
+  Active: Boolean
+  email: String!
+  displayName: String!
+  image: String
+  largeImage: String
+  phone: String
+  password: String!
+  permissions: [Permission!]!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+}
+
+input UserUpdateDataInput {
+  name: String
+  Active: Boolean
+  email: String
+  displayName: String
+  image: String
+  largeImage: String
+  phone: String
+  password: String
+  permissions: UserUpdatepermissionsInput
+  location: LocationUpdateOneInput
+  address: AddressUpdateOneInput
+  itemsOwned: ItemUpdateManyWithoutOwnerInput
+  itemsBorrowing: ItemUpdateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingUpdateManyWithoutOwnerInput
+  borrowingsTo: BorrowingUpdateManyWithoutBorrowerInput
+  messagesFrom: MessageUpdateManyWithoutFromUserInput
+  messagesTo: MessageUpdateManyWithoutToUserInput
+}
+
+input UserUpdateInput {
+  name: String
+  Active: Boolean
+  email: String
+  displayName: String
+  image: String
+  largeImage: String
+  phone: String
+  password: String
+  permissions: UserUpdatepermissionsInput
+  location: LocationUpdateOneInput
+  address: AddressUpdateOneInput
+  itemsOwned: ItemUpdateManyWithoutOwnerInput
+  itemsBorrowing: ItemUpdateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingUpdateManyWithoutOwnerInput
+  borrowingsTo: BorrowingUpdateManyWithoutBorrowerInput
+  messagesFrom: MessageUpdateManyWithoutFromUserInput
+  messagesTo: MessageUpdateManyWithoutToUserInput
+}
+
+input UserUpdateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+}
+
+input UserUpdateOneRequiredWithoutMessagesFromInput {
+  create: UserCreateWithoutMessagesFromInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutMessagesFromDataInput
+  upsert: UserUpsertWithoutMessagesFromInput
+}
+
+input UserUpdateOneRequiredWithoutMessagesToInput {
+  create: UserCreateWithoutMessagesToInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutMessagesToDataInput
+  upsert: UserUpsertWithoutMessagesToInput
+}
+
+input UserUpdateOneWithoutBorrowingsFromInput {
+  create: UserCreateWithoutBorrowingsFromInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateWithoutBorrowingsFromDataInput
+  upsert: UserUpsertWithoutBorrowingsFromInput
+}
+
+input UserUpdateOneWithoutBorrowingsToInput {
+  create: UserCreateWithoutBorrowingsToInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateWithoutBorrowingsToDataInput
+  upsert: UserUpsertWithoutBorrowingsToInput
+}
+
+input UserUpdateOneWithoutItemsBorrowingInput {
+  create: UserCreateWithoutItemsBorrowingInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateWithoutItemsBorrowingDataInput
+  upsert: UserUpsertWithoutItemsBorrowingInput
+}
+
+input UserUpdateOneWithoutItemsOwnedInput {
+  create: UserCreateWithoutItemsOwnedInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateWithoutItemsOwnedDataInput
+  upsert: UserUpsertWithoutItemsOwnedInput
+}
+
+input UserUpdatepermissionsInput {
+  set: [Permission!]
+}
+
+input UserUpdateWithoutBorrowingsFromDataInput {
+  name: String
+  Active: Boolean
+  email: String
+  displayName: String
+  image: String
+  largeImage: String
+  phone: String
+  password: String
+  permissions: UserUpdatepermissionsInput
+  location: LocationUpdateOneInput
+  address: AddressUpdateOneInput
+  itemsOwned: ItemUpdateManyWithoutOwnerInput
+  itemsBorrowing: ItemUpdateManyWithoutCurrentBorrowerInput
+  borrowingsTo: BorrowingUpdateManyWithoutBorrowerInput
+  messagesFrom: MessageUpdateManyWithoutFromUserInput
+  messagesTo: MessageUpdateManyWithoutToUserInput
+}
+
+input UserUpdateWithoutBorrowingsToDataInput {
+  name: String
+  Active: Boolean
+  email: String
+  displayName: String
+  image: String
+  largeImage: String
+  phone: String
+  password: String
+  permissions: UserUpdatepermissionsInput
+  location: LocationUpdateOneInput
+  address: AddressUpdateOneInput
+  itemsOwned: ItemUpdateManyWithoutOwnerInput
+  itemsBorrowing: ItemUpdateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingUpdateManyWithoutOwnerInput
+  messagesFrom: MessageUpdateManyWithoutFromUserInput
+  messagesTo: MessageUpdateManyWithoutToUserInput
+}
+
+input UserUpdateWithoutItemsBorrowingDataInput {
+  name: String
+  Active: Boolean
+  email: String
+  displayName: String
+  image: String
+  largeImage: String
+  phone: String
+  password: String
+  permissions: UserUpdatepermissionsInput
+  location: LocationUpdateOneInput
+  address: AddressUpdateOneInput
+  itemsOwned: ItemUpdateManyWithoutOwnerInput
+  borrowingsFrom: BorrowingUpdateManyWithoutOwnerInput
+  borrowingsTo: BorrowingUpdateManyWithoutBorrowerInput
+  messagesFrom: MessageUpdateManyWithoutFromUserInput
+  messagesTo: MessageUpdateManyWithoutToUserInput
+}
+
+input UserUpdateWithoutItemsOwnedDataInput {
+  name: String
+  Active: Boolean
+  email: String
+  displayName: String
+  image: String
+  largeImage: String
+  phone: String
+  password: String
+  permissions: UserUpdatepermissionsInput
+  location: LocationUpdateOneInput
+  address: AddressUpdateOneInput
+  itemsBorrowing: ItemUpdateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingUpdateManyWithoutOwnerInput
+  borrowingsTo: BorrowingUpdateManyWithoutBorrowerInput
+  messagesFrom: MessageUpdateManyWithoutFromUserInput
+  messagesTo: MessageUpdateManyWithoutToUserInput
+}
+
+input UserUpdateWithoutMessagesFromDataInput {
+  name: String
+  Active: Boolean
+  email: String
+  displayName: String
+  image: String
+  largeImage: String
+  phone: String
+  password: String
+  permissions: UserUpdatepermissionsInput
+  location: LocationUpdateOneInput
+  address: AddressUpdateOneInput
+  itemsOwned: ItemUpdateManyWithoutOwnerInput
+  itemsBorrowing: ItemUpdateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingUpdateManyWithoutOwnerInput
+  borrowingsTo: BorrowingUpdateManyWithoutBorrowerInput
+  messagesTo: MessageUpdateManyWithoutToUserInput
+}
+
+input UserUpdateWithoutMessagesToDataInput {
+  name: String
+  Active: Boolean
+  email: String
+  displayName: String
+  image: String
+  largeImage: String
+  phone: String
+  password: String
+  permissions: UserUpdatepermissionsInput
+  location: LocationUpdateOneInput
+  address: AddressUpdateOneInput
+  itemsOwned: ItemUpdateManyWithoutOwnerInput
+  itemsBorrowing: ItemUpdateManyWithoutCurrentBorrowerInput
+  borrowingsFrom: BorrowingUpdateManyWithoutOwnerInput
+  borrowingsTo: BorrowingUpdateManyWithoutBorrowerInput
+  messagesFrom: MessageUpdateManyWithoutFromUserInput
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
+}
+
+input UserUpsertWithoutBorrowingsFromInput {
+  update: UserUpdateWithoutBorrowingsFromDataInput!
+  create: UserCreateWithoutBorrowingsFromInput!
+}
+
+input UserUpsertWithoutBorrowingsToInput {
+  update: UserUpdateWithoutBorrowingsToDataInput!
+  create: UserCreateWithoutBorrowingsToInput!
+}
+
+input UserUpsertWithoutItemsBorrowingInput {
+  update: UserUpdateWithoutItemsBorrowingDataInput!
+  create: UserCreateWithoutItemsBorrowingInput!
+}
+
+input UserUpsertWithoutItemsOwnedInput {
+  update: UserUpdateWithoutItemsOwnedDataInput!
+  create: UserCreateWithoutItemsOwnedInput!
+}
+
+input UserUpsertWithoutMessagesFromInput {
+  update: UserUpdateWithoutMessagesFromDataInput!
+  create: UserCreateWithoutMessagesFromInput!
+}
+
+input UserUpsertWithoutMessagesToInput {
+  update: UserUpdateWithoutMessagesToDataInput!
+  create: UserCreateWithoutMessagesToInput!
+}
+
+input UserWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  Active: Boolean
+
+  """All values that are not equal to given value."""
+  Active_not: Boolean
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
+  displayName: String
+
+  """All values that are not equal to given value."""
+  displayName_not: String
+
+  """All values that are contained in given list."""
+  displayName_in: [String!]
+
+  """All values that are not contained in given list."""
+  displayName_not_in: [String!]
+
+  """All values less than the given value."""
+  displayName_lt: String
+
+  """All values less than or equal the given value."""
+  displayName_lte: String
+
+  """All values greater than the given value."""
+  displayName_gt: String
+
+  """All values greater than or equal the given value."""
+  displayName_gte: String
+
+  """All values containing the given string."""
+  displayName_contains: String
+
+  """All values not containing the given string."""
+  displayName_not_contains: String
+
+  """All values starting with the given string."""
+  displayName_starts_with: String
+
+  """All values not starting with the given string."""
+  displayName_not_starts_with: String
+
+  """All values ending with the given string."""
+  displayName_ends_with: String
+
+  """All values not ending with the given string."""
+  displayName_not_ends_with: String
+  image: String
+
+  """All values that are not equal to given value."""
+  image_not: String
+
+  """All values that are contained in given list."""
+  image_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_not_in: [String!]
+
+  """All values less than the given value."""
+  image_lt: String
+
+  """All values less than or equal the given value."""
+  image_lte: String
+
+  """All values greater than the given value."""
+  image_gt: String
+
+  """All values greater than or equal the given value."""
+  image_gte: String
+
+  """All values containing the given string."""
+  image_contains: String
+
+  """All values not containing the given string."""
+  image_not_contains: String
+
+  """All values starting with the given string."""
+  image_starts_with: String
+
+  """All values not starting with the given string."""
+  image_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_ends_with: String
+
+  """All values not ending with the given string."""
+  image_not_ends_with: String
+  largeImage: String
+
+  """All values that are not equal to given value."""
+  largeImage_not: String
+
+  """All values that are contained in given list."""
+  largeImage_in: [String!]
+
+  """All values that are not contained in given list."""
+  largeImage_not_in: [String!]
+
+  """All values less than the given value."""
+  largeImage_lt: String
+
+  """All values less than or equal the given value."""
+  largeImage_lte: String
+
+  """All values greater than the given value."""
+  largeImage_gt: String
+
+  """All values greater than or equal the given value."""
+  largeImage_gte: String
+
+  """All values containing the given string."""
+  largeImage_contains: String
+
+  """All values not containing the given string."""
+  largeImage_not_contains: String
+
+  """All values starting with the given string."""
+  largeImage_starts_with: String
+
+  """All values not starting with the given string."""
+  largeImage_not_starts_with: String
+
+  """All values ending with the given string."""
+  largeImage_ends_with: String
+
+  """All values not ending with the given string."""
+  largeImage_not_ends_with: String
+  phone: String
+
+  """All values that are not equal to given value."""
+  phone_not: String
+
+  """All values that are contained in given list."""
+  phone_in: [String!]
+
+  """All values that are not contained in given list."""
+  phone_not_in: [String!]
+
+  """All values less than the given value."""
+  phone_lt: String
+
+  """All values less than or equal the given value."""
+  phone_lte: String
+
+  """All values greater than the given value."""
+  phone_gt: String
+
+  """All values greater than or equal the given value."""
+  phone_gte: String
+
+  """All values containing the given string."""
+  phone_contains: String
+
+  """All values not containing the given string."""
+  phone_not_contains: String
+
+  """All values starting with the given string."""
+  phone_starts_with: String
+
+  """All values not starting with the given string."""
+  phone_not_starts_with: String
+
+  """All values ending with the given string."""
+  phone_ends_with: String
+
+  """All values not ending with the given string."""
+  phone_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
+  location: LocationWhereInput
+  address: AddressWhereInput
+  itemsOwned_every: ItemWhereInput
+  itemsOwned_some: ItemWhereInput
+  itemsOwned_none: ItemWhereInput
+  itemsBorrowing_every: ItemWhereInput
+  itemsBorrowing_some: ItemWhereInput
+  itemsBorrowing_none: ItemWhereInput
+  borrowingsFrom_every: BorrowingWhereInput
+  borrowingsFrom_some: BorrowingWhereInput
+  borrowingsFrom_none: BorrowingWhereInput
+  borrowingsTo_every: BorrowingWhereInput
+  borrowingsTo_some: BorrowingWhereInput
+  borrowingsTo_none: BorrowingWhereInput
+  messagesFrom_every: MessageWhereInput
+  messagesFrom_some: MessageWhereInput
+  messagesFrom_none: MessageWhereInput
+  messagesTo_every: MessageWhereInput
+  messagesTo_some: MessageWhereInput
+  messagesTo_none: MessageWhereInput
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  email: String
+  displayName: String
+}

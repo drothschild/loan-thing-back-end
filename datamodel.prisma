@@ -1,0 +1,131 @@
+enum Permission {
+    ADMIN
+    USER
+    ITEMCREATE
+    ITEMRENT
+    PERMISSIONUPDATE
+}
+enum ItemStatus {
+    Created
+    Available
+    Borrowed
+    Lost
+    Destroyed
+    Overdue
+    Withdrawn
+}
+
+enum BorrowingStatus {
+    Begun
+    Confirmed
+    Available
+    Denied
+    Borrowed
+    Overdue
+    Error
+    Returned
+    Ended
+}
+
+type Location {
+    id: ID! @unique
+    latitude: Float!
+    longitude: Float!
+    borrowingFrom: Borrowing @relation(name: "LocationFrom")
+    borrowingTo: Borrowing @relation(name: "LocationTo")
+}
+
+type Address {
+  id: ID! @unique
+  name: String!
+  street1: String!
+  street2: String!
+  city: String!
+  county: String!
+  state: String!
+  zip: String!
+
+}
+type User {
+    id: ID! @unique
+    name: String!
+    Active: Boolean @default(value: "false")
+    email: String! @unique
+    displayName: String @unique
+    image: String
+    largeImage: String
+    phone: String
+    password: String!
+    permissions: [Permission!]!
+    location: Location
+    address: Address
+    itemsOwned: [Item!]! @relation(name: "ItemsByOwner")
+    itemsBorrowing: [Item!]! @relation(name: "ItemsByBorrower")
+    borrowingsFrom: [Borrowing!]! @relation(name: "BorrowingsByOwner")
+    borrowingsTo: [Borrowing!]! @relation(name: "BorrowingsByBorrower")
+    messagesFrom: [Message!]! @relation(name: "MessagesBySender")
+    messagesTo: [Message!]! @relation(name: "MessagesByReceiver")
+}
+
+type Item {
+    id: ID! @unique
+    title: String!
+    description: String!
+    image: String
+    largeImage: String
+    cost: Int!
+    owner: User @relation(name: "ItemsByOwner")
+    currentBorrower: User @relation(name: "ItemsByBorrower")
+    indefiniteBorrowingAllowed: Boolean! @default(value: "false")
+    maxDaysBorrowable: Int!
+    status: ItemStatus!
+    location: Location
+}
+
+type Borrowing {
+    id: ID! @unique
+    item: BorrowingItem!
+    owner: User @relation(name: "BorrowingsByOwner")
+    borrower: User @relation(name: "BorrowingsByBorrower")
+    indefinite: Boolean! @default(value: "false")
+    beginDate: DateTime!
+    endDate: DateTime!
+    borrowedAt: DateTime
+    returnedAt: DateTime
+    status: BorrowingStatus!
+    fromLocation: Location @relation(name: "LocationFrom")
+    toLocation: Location @relation(name: "LocationTo")
+}
+
+type BorrowingItem {
+    id: ID! @unique
+    item: Item!
+    title: String!
+    description: String!
+    image: String
+    largeImage: String
+    cost: Int!
+    owner: User
+    indefiniteBorrowingAllowed: Boolean!
+    maxDaysBorrowable: Int!
+    location: Location
+}
+
+enum MessageStatus {
+    Created
+    Saved
+    Sent
+    Received
+    Read
+    Error
+}
+
+type Message {
+    borrowing: Borrowing
+    contents: String
+    sentAt: DateTime
+    readAt: DateTime
+    status: MessageStatus!
+    fromUser: User! @relation(name: "MessagesBySender")
+    toUser: User! @relation(name: "MessagesByReceiver")
+}
