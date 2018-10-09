@@ -36,22 +36,21 @@ type Location {
 }
 
 type Address {
-  id: ID! @unique
-  name: String!
-  street1: String!
-  street2: String!
-  city: String!
-  county: String!
-  state: String!
-  zip: String!
-
+    id: ID! @unique
+    name: String!
+    street1: String!
+    street2: String!
+    city: String!
+    county: String!
+    state: String!
+    zip: String!
 }
 type User {
     id: ID! @unique
     name: String!
     Active: Boolean @default(value: "false")
     email: String! @unique
-    displayName: String @unique
+    displayName: String! @unique
     image: String
     largeImage: String
     phone: String

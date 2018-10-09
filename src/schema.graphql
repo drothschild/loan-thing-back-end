@@ -2,3 +2,6 @@
 type SuccessMessage {
     message: String
 }
+type Mutation {
+    signup(email: String!, password: String!, name: String!): User
+}
