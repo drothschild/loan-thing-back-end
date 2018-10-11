@@ -3,5 +3,23 @@ type SuccessMessage {
     message: String
 }
 type Mutation {
-    signup(email: String!, password: String!, name: String!): User
+    signup(
+        email: String!
+        password: String!
+        name: String!
+        displayName: String!
+    ): User
+    login(email: String!, password: String!): User
+    logout: SuccessMessage
+}
+type Query {
+    me: User
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    displayName: String!
+    permissions: [Permission!]!
 }
