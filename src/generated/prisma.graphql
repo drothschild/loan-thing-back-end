@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Mon Oct 08 2018 17:23:03 GMT-0700 (Pacific Daylight Time)
+# timestamp: Fri Oct 12 2018 09:58:51 GMT-0700 (Pacific Daylight Time)
 
 type Address implements Node {
   id: ID!
@@ -2717,7 +2717,7 @@ type User implements Node {
   name: String!
   Active: Boolean
   email: String!
-  displayName: String!
+  displayName: String
   image: String
   largeImage: String
   phone: String
@@ -2747,7 +2747,7 @@ input UserCreateInput {
   name: String!
   Active: Boolean
   email: String!
-  displayName: String!
+  displayName: String
   image: String
   largeImage: String
   phone: String
@@ -2806,7 +2806,7 @@ input UserCreateWithoutBorrowingsFromInput {
   name: String!
   Active: Boolean
   email: String!
-  displayName: String!
+  displayName: String
   image: String
   largeImage: String
   phone: String
@@ -2825,7 +2825,7 @@ input UserCreateWithoutBorrowingsToInput {
   name: String!
   Active: Boolean
   email: String!
-  displayName: String!
+  displayName: String
   image: String
   largeImage: String
   phone: String
@@ -2844,7 +2844,7 @@ input UserCreateWithoutItemsBorrowingInput {
   name: String!
   Active: Boolean
   email: String!
-  displayName: String!
+  displayName: String
   image: String
   largeImage: String
   phone: String
@@ -2863,7 +2863,7 @@ input UserCreateWithoutItemsOwnedInput {
   name: String!
   Active: Boolean
   email: String!
-  displayName: String!
+  displayName: String
   image: String
   largeImage: String
   phone: String
@@ -2882,7 +2882,7 @@ input UserCreateWithoutMessagesFromInput {
   name: String!
   Active: Boolean
   email: String!
-  displayName: String!
+  displayName: String
   image: String
   largeImage: String
   phone: String
@@ -2901,7 +2901,7 @@ input UserCreateWithoutMessagesToInput {
   name: String!
   Active: Boolean
   email: String!
-  displayName: String!
+  displayName: String
   image: String
   largeImage: String
   phone: String
@@ -2955,7 +2955,7 @@ type UserPreviousValues {
   name: String!
   Active: Boolean
   email: String!
-  displayName: String!
+  displayName: String
   image: String
   largeImage: String
   phone: String

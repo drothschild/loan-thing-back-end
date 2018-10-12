@@ -20,6 +20,8 @@ type User {
     id: ID!
     name: String!
     email: String!
+    phone: String
     displayName: String!
     permissions: [Permission!]!
+    address: Address
 }

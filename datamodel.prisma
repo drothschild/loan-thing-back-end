@@ -50,7 +50,7 @@ type User {
     name: String!
     Active: Boolean @default(value: "false")
     email: String! @unique
-    displayName: String! @unique
+    displayName: String @unique
     image: String
     largeImage: String
     phone: String

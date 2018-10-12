@@ -8,7 +8,7 @@ const mutations = {
         if (!validator.isEmail(args.email)) {
             throw new Error('Invalid Email Address!');
         }
-        if ((!validator.isLength(args.password), { min: 8, max: undefined })) {
+        if (!validator.isLength(args.password, { min: 8, max: undefined })) {
             throw new Error('Password must be at least 8 characters!');
         }
         // hash their password
